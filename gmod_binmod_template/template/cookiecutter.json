@@ -19,13 +19,5 @@
   "targets": [
     "win64,linux"
   ],
-  "use_conan": [
-    "n",
-    "y"
-  ],
-  "use_vcpkg": [
-    "n",
-    "y"
-  ],
   "description": "A Garry's Mod binary module."
 }
