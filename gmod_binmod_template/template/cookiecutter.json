@@ -1,0 +1,31 @@
+{
+  "project_name": "My GMod Module",
+  "project_slug": "{{ cookiecutter.project_name | lower | replace(' ', '-') }}",
+  "module_name": "mymodule",
+  "module_slug": "{{ cookiecutter.module_name | lower | replace(' ', '_') }}",
+  "binary_kind": [
+    "server",
+    "client"
+  ],
+  "license": [
+    "MIT",
+    "Apache-2.0",
+    "Unlicense"
+  ],
+  "cxx_std": [
+    "17",
+    "20"
+  ],
+  "targets": [
+    "win64,linux"
+  ],
+  "use_conan": [
+    "n",
+    "y"
+  ],
+  "use_vcpkg": [
+    "n",
+    "y"
+  ],
+  "description": "A Garry's Mod binary module."
+}

@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "gmod-binmod-template"
+version = "0.1.1"
+description = "Garry's Mod binary module project generator"
+requires-python = ">=3.8"
+dependencies = ["cookiecutter>=2.5"]
+readme = "README.md"
+authors = [
+    {name = "Aaron H", email = "tobeadded@example.com"}
+]
+
+[project.scripts]
+gmod-binmod-template = "gmod_binmod_template.cli:main"
+
+[tool.setuptools.package-data]
+gmod_binmod_template = ["template/**/**"]
+
+[tool.setuptools.packages.find]
+include = ["gmod_binmod_template*"]

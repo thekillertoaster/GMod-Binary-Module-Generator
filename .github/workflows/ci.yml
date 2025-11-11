@@ -1,0 +1,20 @@
+name: ci
+on: [ push, pull_request ]
+jobs:
+  build:
+    strategy:
+      matrix:
+        os: [ ubuntu-22.04, windows-2022 ]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: seanmiddleditch/gha-setup-ninja@v4
+      - name: Configure
+        run: cmake --preset ${{ startsWith(matrix.os,'windows') && 'win' || 'linux' }}
+      - name: Build
+        run: cmake --build --preset ${{ startsWith(matrix.os,'windows') && 'win-release' || 'linux-release' }} --parallel
+      - name: Pack
+        run: |
+          cmake --install build/${{ startsWith(matrix.os,'windows') && 'win' || 'linux' }} --prefix "$PWD/out"
+      - uses: actions/upload-artifact@v4
+        with: { name: bin-${ { matrix.os } }, path: out/dist/* }

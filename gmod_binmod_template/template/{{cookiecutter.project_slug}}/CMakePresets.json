@@ -1,0 +1,35 @@
+{
+  "version": 5,
+  "configurePresets": [
+    {
+      "name": "win",
+      "generator": "Ninja",
+      "binaryDir": "build/win",
+      "cacheVariables": {
+        "CMAKE_MAKE_PROGRAM": "${sourceDir}/.tools/ninja.exe",
+        "CMAKE_TOOLCHAIN_FILE": "cmake/Toolchain-Windows-MSVC.cmake"
+      }
+    },
+    {
+      "name": "linux",
+      "generator": "Ninja",
+      "binaryDir": "build/linux",
+      "cacheVariables": {
+        "CMAKE_MAKE_PROGRAM": "${sourceDir}/.tools/ninja",
+        "CMAKE_TOOLCHAIN_FILE": "cmake/Toolchain-Linux-GCC.cmake"
+      }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "win-release",
+      "configurePreset": "win",
+      "configuration": "Release"
+    },
+    {
+      "name": "linux-release",
+      "configurePreset": "linux",
+      "configuration": "Release"
+    }
+  ]
+}
